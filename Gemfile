@@ -45,6 +45,7 @@ group :development do
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
   gem 'letter_opener_web', '~> 1.0'
+  gem 'devise-i18n'
 end
 
 group :test do
