@@ -89,6 +89,8 @@ ja:
       send_paranoid_instructions: メールアドレスが登録済みの場合、パスワード再設定用のメールが数分以内に送信されます。
       updated: パスワードが正しく変更されました。
       updated_not_active: パスワードが正しく変更されました。
+    user:
+      list: ユーザー一覧
     registrations:
       destroyed: アカウントを削除しました。またのご利用をお待ちしております。
       edit:
@@ -113,6 +115,7 @@ ja:
       already_signed_out: 既にログアウト済みです。
       new:
         sign_in: ログイン
+        sign_out: ログアウト
       signed_in: ログインしました。
       signed_out: ログアウトしました。
     shared:
