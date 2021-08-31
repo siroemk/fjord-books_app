@@ -19,7 +19,7 @@
 
     <p class="navbar-text pull-right">
       <% if user_signed_in? %>
-        <%= link_to t('devise.shared.links.sign_in_with_provider', provider: current_user.email) %>
+        <%= t('devise.shared.links.sign_in_with_provider', provider: current_user.email) %>
         <%= link_to t('devise.user.list'), user_registration_path, class: 'navbar-link' %> |
         <%= link_to t('devise.registrations.edit.title', resource: User.model_name.human), edit_user_registration_path, class: 'navbar-link' %> |
         <%= link_to t('devise.sessions.new.sign_out'), destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
