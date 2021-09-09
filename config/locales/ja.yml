@@ -238,3 +238,10 @@ ja:
     registrations:
       edit:
         title: "アカウント編集"
+  follow:
+    common:
+      following: "フォロー"
+      follower: "フォロワー"
+    button:
+      follow_user: "フォローする"
+      unfollow_user: "フォローを解除する"

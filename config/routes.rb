@@ -10,4 +10,5 @@ Rails.application.routes.draw do
       get 'followers'
     end
   end
+  resources :relationships, only: %i[create destroy]
 end
