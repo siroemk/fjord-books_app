@@ -1,7 +1,31 @@
-<h1>フォロワー一覧<h1>
+<h1><%= t 'follow.common.follower' %></h1>
 
-<p>
-  <% @followers.each do |follower| %>
-    <%= follower.name %>
-  <% end %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:postal_code) %></th>
+      <th><%= User.human_attribute_name(:address) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @followers.each do |follower| %>
+      <tr>
+        <th>
+          <% if follower.avatar.attached? %>
+            <%= image_tag follower.avatar.variant(resize_to_fill: [30, 30])%>
+          <% end %>
+        </th>
+        <td><%= follower.email %></td>
+        <td><%= follower.name %></td>
+        <td><%= follower.postal_code %></td>
+        <td><%= follower.address %></td>
+        <td><%= link_to t('views.common.show'), user_path(follower.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
