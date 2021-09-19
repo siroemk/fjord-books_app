@@ -35,9 +35,9 @@
 
 <p>
   <%= t 'follow.common.following' %>
-  <%= link_to "#{@user.followings.count}", followings_user_path %>人 |
+  <%= link_to "#{@user.followings.count}", user_followings_path(@user) %>人 |
   <%= t 'follow.common.follower' %>
-  <%= link_to "#{@user.followers.count}", followers_user_path %>人
+  <%= link_to "#{@user.followers.count}", user_followers_path(@user) %>人
 </p>
 
 <p>
