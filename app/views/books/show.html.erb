@@ -20,6 +20,11 @@
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
+<h2><%= Comment.model_name.human %></h2>
+<% @book.comments.each do |comment| %>
+  <p><%= comment.content %></p>
+<% end %>
+
 <%= render partial: 'comments/form', locals: { commentable: @book } %>
 
 <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
