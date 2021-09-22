@@ -10,11 +10,6 @@
   <%= @report.content %>
 </p>
 
-<h2><%= Comment.model_name.human %></h2>
-<% @report.comments.each do |comment| %>
-  <p><%= comment.content %></p>
-<% end %>
-
 <%= render partial: 'comments/form', locals: { commentable: @report } %>
 
 <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
