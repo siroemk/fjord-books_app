@@ -33,6 +33,26 @@
   <% end %>
 </p>
 
+<p>
+  <%= t 'follow.common.following' %>
+  <%= link_to "#{@user.followings.count}", user_followings_path(@user) %>人 |
+  <%= t 'follow.common.follower' %>
+  <%= link_to "#{@user.followers.count}", user_followers_path(@user) %>人
+</p>
+
+<p>
+  <% unless current_user == @user %>
+    <% if current_user.following?(@user) %>
+      <%= button_to t('follow.button.unfollow_user'), relationship_path(@user.id), method: :delete %>
+    <% else %>
+      <%= form_with model: @user.passive_relationships.build do |f| %>
+        <%= hidden_field_tag :followed_id, @user.id %>
+        <%= f.submit t('follow.button.follow_user') %>
+      <% end %>
+    <% end %>
+  <% end %>
+</p>
+
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
