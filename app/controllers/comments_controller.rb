@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   # POST /books/1/comments
   def create
     @comment = @commentable.comments.new(comment_params)
+    @comment.user = current_user
 
     if @comment.save
       redirect_to @commentable, notice: 'Comment was successfully created.'
