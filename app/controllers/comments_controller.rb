@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @commentable, notice: 'Comment was successfully created.'
+      redirect_to @commentable, notice: t('comments.create.notice')
     else
       render :new
     end
