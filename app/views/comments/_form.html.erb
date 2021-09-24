@@ -1,12 +1,16 @@
 <h2><%= Comment.model_name.human %></h2>
-<% commentable.comments.each do |comment| %>
-  <% if comment.user.name.blank? %>
-    <p><%= comment.user.email %></p>
-  <% else %>
-    <p><%= comment.user.name %></p>
+<% if commentable.comments.blank? %>
+  <p>コメントはありません</p> 
+<% else %>
+  <% commentable.comments.each do |comment| %>
+    <% if comment.user.name.blank? %>
+      <p><%= comment.user.email %></p>
+    <% else %>
+      <p><%= comment.user.name %></p>
+    <% end %>
+    <p><%= comment.content %></p>
+    <p><%= comment.created_at.to_s(:datetime_jp) %></p>
   <% end %>
-  <p><%= comment.content %></p>
-  <p><%= comment.created_at.to_s(:datetime_jp) %></p>
 <% end %>
 
 <%= form_with(model: [commentable, Comment.new]) do |form| %>
