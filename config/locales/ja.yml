@@ -258,3 +258,4 @@ ja:
   comments:
     create:
       notice: "コメントしました。"
+      errors: "コメントできませんでした。"

@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @commentable, notice: t('comments.create.notice')
     else
-      render :new
+      redirect_to @commentable, notice: t('comments.create.errors')
     end
   end
 
