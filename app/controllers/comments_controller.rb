@@ -8,12 +8,8 @@ class CommentsController < ApplicationController
   def create
     comment = @commentable.comments.new(comment_params)
     comment.user = current_user
-
-    if comment.save
-      redirect_to @commentable, notice: t('comments.create.notice')
-    else
-      redirect_to @commentable, notice: t('comments.create.errors')
-    end
+    comment.save
+    redirect_to @commentable, notice: t('comments.create.errors')
   end
 
   def destroy
