@@ -2,13 +2,14 @@
 
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
+  before_action :set_commentable, only: %i[create destroy edit update]
   # POST /reports/1/comments
   # POST /books/1/comments
   def create
-    @comment = @commentable.comments.new(comment_params)
-    @comment.user = current_user
+    comment = @commentable.comments.new(comment_params)
+    comment.user = current_user
 
-    if @comment.save
+    if comment.save
       redirect_to @commentable, notice: t('comments.create.notice')
     else
       redirect_to @commentable, notice: t('comments.create.errors')
