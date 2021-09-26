@@ -259,3 +259,5 @@ ja:
     create:
       notice: "コメントしました。"
       errors: "コメントできませんでした。"
+    show:
+      no_comment: "コメントはありません"
