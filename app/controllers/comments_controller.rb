@@ -3,13 +3,13 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
   before_action :set_commentable, only: %i[create destroy edit update]
-  # POST /reports/1/comments
-  # POST /books/1/comments
+  before_action :correct_user, only: %i[edit update destroy]
+
   def create
     comment = @commentable.comments.new(comment_params)
     comment.user = current_user
     comment.save
-    redirect_to @commentable, notice: t('comments.create.errors')
+    redirect_to @commentable, notice: t('comments.create.notice')
   end
 
   def destroy
@@ -35,5 +35,10 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def correct_user
+    comment = Comment.find(params[:id])
+    redirect_to(root_url) unless comment.user_id == current_user.id
   end
 end
