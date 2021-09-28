@@ -2,14 +2,17 @@
 
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
-  before_action :set_commentable, only: %i[create destroy edit update]
   before_action :correct_user, only: %i[edit update destroy]
 
   def create
-    comment = @commentable.comments.new(comment_params)
-    comment.user = current_user
-    comment.save
-    redirect_to @commentable, notice: t('comments.create.notice')
+    @comment = @commentable.comments.new(comment_params)
+    @comment.user = current_user
+    if @comment.save
+      redirect_to @commentable, notice: t('comments.create.notice')
+    else
+      flash.now[:alert] = t('comments.create.errors')
+      render @template
+    end
   end
 
   def destroy

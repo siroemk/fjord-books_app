@@ -2,7 +2,7 @@
 <% if commentable.comments.blank? %>
   <p><%= t('comments.show.no_comment') %></p>
 <% else %>
-  <% commentable.comments.each do |comment| %>
+  <% commentable.comments.includes(:user).each do |comment| %>
     <% if comment.user.name.blank? %>
       <p><%= comment.user.email %></p>
     <% else %>
