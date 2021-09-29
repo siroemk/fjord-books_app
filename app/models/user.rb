@@ -30,4 +30,5 @@ class User < ApplicationRecord
   end
 
   has_many :comment, dependent: :destroy
+  has_many :report, dependent: :destroy
 end
