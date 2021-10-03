@@ -2,7 +2,7 @@
 
 class Books::CommentsController < CommentsController
   before_action :set_commentable
-  before_action :set_rendar
+  before_action :set_template
 
   private
 
@@ -11,7 +11,7 @@ class Books::CommentsController < CommentsController
     @book = @commentable
   end
 
-  def set_rendar
+  def set_template
     @template = 'books/show'
   end
 end

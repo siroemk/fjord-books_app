@@ -2,7 +2,7 @@
 
 class Reports::CommentsController < CommentsController
   before_action :set_commentable
-  before_action :set_rendar
+  before_action :set_template
 
   private
 
@@ -11,7 +11,7 @@ class Reports::CommentsController < CommentsController
     @report = @commentable
   end
 
-  def set_rendar
+  def set_template
     @template = 'reports/show'
   end
 end
