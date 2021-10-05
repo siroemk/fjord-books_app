@@ -54,10 +54,14 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
-    @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: t('controllers.common.notice_destroy', name: Book.model_name.human) }
-      format.json { head :no_content }
+      if @book.destroy
+        format.html { redirect_to books_url, notice: t('controllers.common.notice_destroy', name: Book.model_name.human) }
+        format.json { head :no_content }
+      else
+        format.html { render :new }
+        format.json { render json: @book.errors, status: :unprocessable_entity }
+      end
     end
   end
 

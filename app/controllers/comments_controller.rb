@@ -16,8 +16,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
-    redirect_to @commentable
+    if @comment.destroy
+      redirect_to @commentable
+    else
+      flash.now[:alert] = @comment.errors.full_messages.first
+      render @template
+    end
   end
 
   def edit; end
