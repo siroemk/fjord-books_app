@@ -29,6 +29,6 @@ class User < ApplicationRecord
     relationship&.destroy!
   end
 
-  has_many :comment, dependent: :destroy
+  has_many :comment, dependent: :nullify
   has_many :report, dependent: :destroy
 end

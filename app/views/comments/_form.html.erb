@@ -4,10 +4,14 @@
 <% else %>
   <% commentable.comments.includes(:user).each do |comment| %>
     <p><%= comment.content %></p>
-    <% if comment.user.name.blank? %>
-      <%= comment.user.email %>
+    <% if comment.user_id.nil? %>
+      <p>退会したユーザー</p>
     <% else %>
-      <%= comment.user.name %>
+      <% if comment.user.name.blank? %>
+        <%= comment.user.email %>
+      <% else %>
+        <%= comment.user.name %>
+      <% end %>
     <% end %>
     <%= comment.created_at.to_s(:datetime_jp) %>
 
