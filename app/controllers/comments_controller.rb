@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @commentable, notice: t('comments.create.notice')
     else
-      flash.now[:alert] = t('comments.create.errors')
+      flash.now[:alert] = @comment.errors.full_messages.first
       render @template
     end
   end
