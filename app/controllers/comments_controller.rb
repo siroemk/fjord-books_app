@@ -2,7 +2,6 @@
 
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
-  before_action :correct_user, only: %i[edit update destroy]
 
   def create
     @comment = @commentable.comments.new(comment_params)
@@ -41,11 +40,7 @@ class CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = Comment.find(params[:id])
-  end
-
-  def correct_user
-    comment = Comment.find(params[:id])
-    redirect_to(root_url) unless comment.user_id == current_user.id
+    @comment = current_user.comment.find_by(id: params[:id])
+    redirect_to(root_url) if @comment.nil?
   end
 end
