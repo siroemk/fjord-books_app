@@ -255,3 +255,9 @@ ja:
     registrations:
       edit:
         title: "アカウント編集"
+  comments:
+    create:
+      notice: "コメントしました。"
+      errors: "コメントできませんでした。"
+    show:
+      no_comment: "コメントはありません"

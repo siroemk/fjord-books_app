@@ -28,4 +28,7 @@ class User < ApplicationRecord
     relationship = active_relationships.find_by(following_id: user.id)
     relationship&.destroy!
   end
+
+  has_many :comment, dependent: :nullify
+  has_many :report, dependent: :destroy
 end
