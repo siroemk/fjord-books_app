@@ -38,4 +38,13 @@ class UserTest < ActiveSupport::TestCase
     Relationship.create(following_id: she.id, follower_id: me.id)
     assert me.following?(she)
   end
+
+  test '#followed_by?' do
+    me = User.create(email: 'me@example.com', password: 'password')
+    she = User.create(email: 'she@example.com', password: 'password')
+
+    assert_not she.following?(me)
+    Relationship.create(following_id: me.id, follower_id: she.id)
+    assert she.following?(me)
+  end
 end
