@@ -43,4 +43,13 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '学習2日目(追記）'
     assert_text '追記します'
   end
+
+  test 'destroying a Report' do
+    visit reports_url
+    page.accept_confirm do
+      click_on '削除', match: :first
+    end
+
+    assert_text '日報が削除されました。'
+  end
 end
