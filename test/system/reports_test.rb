@@ -30,4 +30,17 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '学習2日目'
     assert_text '面白かったです！'
   end
+
+  test 'updating a Report' do
+    visit reports_url
+    click_on '編集'
+
+    fill_in 'タイトル', with: '学習2日目(追記）'
+    fill_in '内容', with: '追記します'
+    click_on '更新する'
+
+    assert_text '日報が更新されました。'
+    assert_text '学習2日目(追記）'
+    assert_text '追記します'
+  end
 end
